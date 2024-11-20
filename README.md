@@ -1,35 +1,28 @@
-# Capstone-Data-Platform contains 6 folders (modules)
-Environment:
-This document introduces you to the data platform architecture of an ecommerce company named SoftCart.
+Capstone Data Platform Project
+Overview
+This project simulates the data platform architecture of an e-commerce company, SoftCart, that operates with a hybrid architecture involving both on-premises and cloud-based solutions. It integrates multiple technologies to handle online transactions, data warehousing, big data analytics, and business intelligence reporting.
 
-SoftCart uses a hybrid architecture, with some of its databases on premises and some on cloud.
+The goal of this project is to showcase end-to-end data engineering and analytics skills, including database management, ETL pipelines, big data processing, and interactive dashboards.
 
-Tools and Technologies:
-OLTP database - MySQL
-NoSql database - MongoDB
-Production Data warehouse – DB2 on Cloud
-Staging Data warehouse – PostgreSQL
-Big data platform - Hadoop
-Big data analytics platform – Spark
-Business Intelligence Dashboard - IBM Cognos Analytics
-Data Pipelines - Apache Airflow
-Process:
-SoftCart's online presence is primarily through its website, which customers access using a variety of devices like laptops, mobiles and tablets.
+Technologies Used
+<table> <tr> <th>Category</th> <th>Tools</th> </tr> <tr> <td>Databases</td> <td>MySQL, MongoDB, PostgreSQL, IBM DB2 (Cloud)</td> </tr> <tr> <td>Big Data</td> <td>Hadoop, Apache Spark</td> </tr> <tr> <td>ETL & Data Pipelines</td> <td>Apache Airflow</td> </tr> <tr> <td>Business Intelligence</td> <td>IBM Cognos Analytics</td> </tr> </table>
+Project Architecture
+<details> <summary>Click to expand</summary>
+Online Presence:
 
-All the catalog data of the products is stored in the MongoDB NoSQL server.
+SoftCart's e-commerce website serves customers across various devices (laptops, mobiles, tablets).
+The website is powered by two databases:
+Product Catalog Data: Stored in a MongoDB NoSQL server.
+Transactional Data (Inventory & Sales): Stored in a MySQL database.
+Data Flow:
 
-All the transactional data like inventory and sales are stored in the MySQL database server.
+ETL Pipelines: Data is periodically extracted from the OLTP (MySQL) and NoSQL (MongoDB) databases and staged in a PostgreSQL data warehouse.
+Production Warehouse: Data is processed and moved to an IBM DB2 cloud instance for final analytics and reporting.
+Big Data Integration:
 
-SoftCart's webserver is driven entirely by these two databases.
+A Hadoop cluster collects all data for long-term storage and big data processing.
+Spark performs analytics on the Hadoop cluster for deeper insights.
+Business Intelligence:
 
-Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL.
-
-The production data warehouse is on the cloud instance of IBM DB2 server.
-
-BI teams connect to the IBM DB2 for operational dashboard creation. IBM Cognos Analytics is used to create dashboards.
-
-SoftCart uses Hadoop cluster as its big data platform where all the data is collected for analytics purposes.
-
-Spark is used to analyse the data on the Hadoop cluster.
-
-To move data between OLTP, NoSQL and the data warehouse, ETL pipelines are used and these run on Apache Airflow.
+BI dashboards are built using IBM Cognos Analytics, connected directly to the IBM DB2 production data warehouse.
+</details>
